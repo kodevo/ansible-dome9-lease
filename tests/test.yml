@@ -5,6 +5,7 @@
     dome9_api_key_id: "{{ lookup('env','DOME9_API_KEY_ID') }}"
     dome9_api_key_secret: "{{ lookup('env','DOME9_API_KEY_SECRET') }}"
     dome9_lease_sg_id: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
+    dome9_lease_ip: "{{ lookup('env','DOME9_LEASE_IP') }}"
     dome9_lease_note: "ansible-dome9-lease test"
   roles:
     - ansible-dome9-lease
