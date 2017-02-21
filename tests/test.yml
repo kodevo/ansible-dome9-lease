@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  strategy: debug
   vars:
     dome9_api_key_id: "{{ lookup('env','DOME9_API_KEY_ID') }}"
     dome9_api_key_secret: "{{ lookup('env','DOME9_API_KEY_SECRET') }}"
