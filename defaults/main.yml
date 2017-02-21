@@ -2,7 +2,7 @@
 # variable defaults
 
 dome9_lease_type: "aws"
-dome9_lease_region:
+dome9_lease_region: "us_east_1"
 dome9_lease_sg_id:
 dome9_lease_ip:
 dome9_lease_length: "0:5:0"
