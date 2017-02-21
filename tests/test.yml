@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  vars:
+    dome9_api_key_id: "{{ lookup('env','DOME9_API_KEY_ID') }}"
+    dome9_api_key_secret: "{{ lookup('env','DOME9_API_KEY_SECRET') }}"
+    dome9_lease_note: "ansible-dome9-lease test"
+    dome9_lease_port_to: 80
+  roles:
+    - ansible-dome9-lease

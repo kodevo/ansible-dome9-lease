@@ -1,0 +1,20 @@
+---
+- name: Acquire dome9 Dynamic Lease
+  uri:
+    url: https://api.dome9.com/v2/accesslease/aws
+    user: '{{ dome9_api_key_id }}'
+    password: '{{ dome9_api_key_secret }}'
+    method: POST
+    body:
+      region: '{{ dome9_lease_region }}'
+      securityGroupId: '{{ dome9_lease_sg_id }}'
+      ip: '{{ dome9_lease_ip }}'
+      length: '{{ dome9_lease_length }}'
+      protocol: '{{ dome9_lease_protocol }}'
+      portFrom: '{{ dome9_lease_port_from }}'
+      portTo: '{{ dome9_lease_port_to }}'
+      note: '{{ dome9_lease_note }}'
+    body_format: json
+    HEADER_Content-Type: application/json
+    return_content: yes
+    status_code: 201
