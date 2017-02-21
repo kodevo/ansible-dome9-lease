@@ -8,13 +8,14 @@
     body:
       region: "{{ dome9_lease_region }}"
       securityGroupId: "{{ dome9_lease_sg_id }}"
-      ip: "{{ dome9_lease_ip }}"
+#      ip: "{{ dome9_lease_ip }}"
       length: "{{ dome9_lease_length }}"
-      protocol: "{{ dome9_lease_protocol }}"
-      portFrom: "{{ dome9_lease_port_from }}"
-      portTo: "{{ dome9_lease_port_to }}"
+#      protocol: "{{ dome9_lease_protocol }}"
+#      portFrom: "{{ dome9_lease_port_from }}"
+#      portTo: "{{ dome9_lease_port_to }}"
       note: "{{ dome9_lease_note }}"
     body_format: json
     HEADER_Content-Type: application/json
+    force_basic_auth: yes
     return_content: yes
     status_code: 201
