@@ -1,21 +1,29 @@
 ---
-- name: Acquire dome9 Dynamic Lease
+- name: dome9_leases
+  debug:
+    var: dome9_leases
+    verbosity: 2
+  when: dome9_leases is defined
+
+- name: Acquire dome9 Dynamic Leases
   uri:
     url: https://api.dome9.com/v2/accesslease/aws
     user: "{{ dome9_api_key_id }}"
     password: "{{ dome9_api_key_secret }}"
     method: POST
     body:
-      region: "{{ dome9_lease_region }}"
-      securityGroupId: "{{ dome9_lease_sg_id }}"
-      ip: "{{ dome9_lease_ip | default(omit) }}"
-      length: "{{ dome9_lease_length }}"
-      protocol: "{{ dome9_lease_protocol | default(omit) }}"
-      portFrom: "{{ dome9_lease_port_from | int }}"
-      portTo: "{{ dome9_lease_port_to | int }}"
-      note: "{{ dome9_lease_note | default(omit) }}"
+      region: "{{ item.region | dome9_lease_default_region }}"
+      securityGroupId: "{{ item.sg }}"
+      ip: "{{ item.ip | default(omit) }}"
+      length: "{{ item.length | dome9_lease_default_length }}"
+      protocol: "{{ item.protocol | dome9_lease_default_protocol }}"
+      portFrom: "{{ item.port_from | int }}"
+      portTo: "{{ item.port_to | int }}"
+      note: "{{ item.note | dome9_lease_default_note | default(omit) }}"
     body_format: json
     HEADER_Content-Type: application/json
     force_basic_auth: yes
     return_content: yes
     status_code: 201
+  with_items: "{{ dome9_leases }}"
+  when: dome9_leases is defined

@@ -4,8 +4,13 @@
   vars:
     dome9_api_key_id: "{{ lookup('env','DOME9_API_KEY_ID') }}"
     dome9_api_key_secret: "{{ lookup('env','DOME9_API_KEY_SECRET') }}"
-    dome9_lease_sg_id: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
-    dome9_lease_ip: "{{ lookup('env','DOME9_LEASE_IP') }}"
-    dome9_lease_note: "ansible-dome9-lease test"
+    dome9_leases:
+      - name: test
+        sg: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
+        ip: "{{ lookup('env','DOME9_LEASE_IP') | ansible_default_ipv4.address }}"
+        protocol: "{{ lookup('env','DOME9_LEASE_PROTOCOL') | default('TCP') }}"
+        port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM') | default(80) }}"
+        port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO') | default(80) }}"
+        note: "ansible-dome9-lease test"
   roles:
     - ansible-dome9-lease

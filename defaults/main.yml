@@ -1,10 +1,8 @@
 ---
 # variable defaults
 
-dome9_lease_type: "aws"
-dome9_lease_region: "us_east_1"
-dome9_lease_length: "0:5:0"
-dome9_lease_protocol: "TCP"
-dome9_lease_port_from: 22
-dome9_lease_port_to: 22
-dome9_lease_note: "Obtained by Ansible"
+dome9_leases: []
+dome9_lease_default_region: "us_east_1"
+dome9_lease_default_length: "0:5:0"
+dome9_lease_default_protocol: "TCP"
+dome9_lease_default_note: "Acquired via Ansible"
