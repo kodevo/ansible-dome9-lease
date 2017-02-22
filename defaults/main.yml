@@ -3,10 +3,7 @@
 
 dome9_lease_type: "aws"
 dome9_lease_region: "us_east_1"
-dome9_lease_sg_id:
-dome9_lease_ip:
 dome9_lease_length: "0:5:0"
 dome9_lease_protocol: "TCP"
-dome9_lease_port_from:
-dome9_lease_port_to:
+dome9_lease_port_to: 22
 dome9_lease_note: "Obtained by Ansible"
