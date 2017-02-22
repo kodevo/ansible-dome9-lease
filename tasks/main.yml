@@ -7,13 +7,13 @@
     method: POST
     body:
       region: "{{ dome9_lease_region }}"
-      securityGroupId: "sg-7b938b03"
-#      ip: "{{ dome9_lease_ip }}"
+      securityGroupId: "{{ dome9_lease_sg_id }}"
+      ip: "{{ dome9_lease_ip | default(omit) }}"
       length: "{{ dome9_lease_length }}"
-#      protocol: "{{ dome9_lease_protocol }}"
-#      portFrom: "{{ dome9_lease_port_from }}"
-#      portTo: "{{ dome9_lease_port_to }}"
-      note: "{{ dome9_lease_note }}"
+      protocol: "{{ dome9_lease_protocol | default(omit) }}"
+      portFrom: "{{ dome9_lease_port_from | default(omit) }}"
+      portTo: "{{ dome9_lease_port_to | default(omit) }}"
+      note: "{{ dome9_lease_note | default(omit) }}"
     body_format: json
     HEADER_Content-Type: application/json
     force_basic_auth: yes
