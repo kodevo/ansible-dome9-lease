@@ -45,4 +45,4 @@
     dome9_lease:
       id: 0
   when:
-    - dome9_lease_response.skipped is false
+    - dome9_lease_response.skipped == false
