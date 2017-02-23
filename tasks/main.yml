@@ -25,4 +25,10 @@
     return_content: yes
     status_code: 201
   with_items: "{{ dome9_leases }}"
+  register: dome9_lease_response
   when: dome9_leases is defined and dome9_leases|length > 0
+
+- name: dome9_lease_response
+  debug:
+    var: dome9_lease_response
+    verbosity: 2
