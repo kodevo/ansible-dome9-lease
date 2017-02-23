@@ -51,4 +51,5 @@
 
 - name: Add lease_id to dome9_lease
   set_fact:
-    dome9_lease.id: 0
+    dome9_lease:
+      id: 0
