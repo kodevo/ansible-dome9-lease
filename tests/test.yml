@@ -10,8 +10,7 @@
       dome9_leases:
         - name: test
           sg: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
-          ip: "{{ lookup('env','DOME9_LEASE_IP') | default(ansible_default_ipv4.address) }}"
-          protocol: "{{ lookup('env','DOME9_LEASE_PROTOCOL') | default('TCP') }}"
-          port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM') | default(80) }}"
-          port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO') | default(80) }}"
+          protocol: "TCP"
+          port_from: 22
+          port_to: 22
           note: "ansible-dome9-lease test"
