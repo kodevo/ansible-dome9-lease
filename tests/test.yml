@@ -4,16 +4,16 @@
   vars:
     dome9_api_key_id: "{{ lookup('env','DOME9_API_KEY_ID') }}"
     dome9_api_key_secret: "{{ lookup('env','DOME9_API_KEY_SECRET') }}"
+    dome9_lease:
+      action: acquire
+      name: test 1
+      sg: "{{ lookup('env','DOME9_LEASE_SG_ID_1') }}"
+      port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_1') | int }}"
+      port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_1') | int }}"
+      note: ansible-dome9-lease test 1
   roles:
     - ansible-dome9-lease
     - role: ansible-dome9-lease
-      dome9_lease:
-        action: acquire
-        name: test 1
-        sg: "{{ lookup('env','DOME9_LEASE_SG_ID_1') }}"
-        port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_1') | int }}"
-        port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_1') | int }}"
-        note: ansible-dome9-lease test 1
     - role: ansible-dome9-lease
       dome9_lease:
         action: terminate
