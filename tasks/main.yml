@@ -4,7 +4,7 @@
     var: dome9_lease
     verbosity: 2
 
-- name: Acquire dome9 Dynamic Leases
+- name: Acquire dome9 Dynamic Lease
   uri:
     url: https://api.dome9.com/v2/accesslease/aws
     user: "{{ dome9_api_key_id }}"
@@ -34,6 +34,6 @@
     var: dome9_lease_response
     verbosity: 2
 
-- name: Adding lease_id to dome9_leases
+- name: Add lease_id to dome9_lease
   set_fact:
     dome9_lease.id: 0

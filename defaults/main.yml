@@ -3,7 +3,12 @@
 
 dome9_lease:
   action: acquire
+  name: default
   region: us_east_1
+  sg:
+  ip:
   length: 0:5:0
   protocol: TCP
+  port_from:
+  port_to:
   note: Acquired via Ansible
