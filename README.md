@@ -1,5 +1,6 @@
 # Ansible Role: dome9-lease
 
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-kodevo.dome9--lease-blue.svg)](https://galaxy.ansible.com/kodevo/dome9-lease/)
 ![Build Status](https://travis-ci.org/kodevo/ansible-dome9-lease.svg?branch=master)
 
 Acquires a [Dome9](https://dome9.com) dynamic access lease via API v2.
