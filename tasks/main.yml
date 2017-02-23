@@ -11,11 +11,11 @@
     password: "{{ dome9_api_key_secret }}"
     method: POST
     body:
-      region: "{{ dome9_lease.region }}"
+      region: "{{ dome9_lease.region | default(dome9_lease_defaults.region) }}"
       securityGroupId: "{{ dome9_lease.sg }}"
       ip: "{{ dome9_lease.ip | default(omit) }}"
-      length: "{{ dome9_lease.length }}"
-      protocol: "{{ dome9_lease.protocol }}"
+      length: "{{ dome9_lease.length | default(dome9_lease_defaults.length) }}"
+      protocol: "{{ dome9_lease.protocol | default(dome9_lease_defaults.protocol) }}"
       portFrom: "{{ dome9_lease.port_from | int }}"
       portTo: "{{ dome9_lease.port_to | int }}"
       note: "{{ dome9_lease.note | default(omit) }}"
@@ -28,18 +28,9 @@
   when:
     - dome9_lease is defined
     - dome9_lease.action == "acquire"
-    - dome9_lease.region is defined
-    - dome9_lease.region is not none
-    - dome9_lease.region != ""
     - dome9_lease.sg is defined
     - dome9_lease.sg is not none
     - dome9_lease.sg != ""
-    - dome9_lease.length is defined
-    - dome9_lease.length is not none
-    - dome9_lease.length != ""
-    - dome9_lease.protocol is defined
-    - dome9_lease.protocol is not none
-    - dome9_lease.protocol != ""
     - dome9_lease.port_from is defined
     - dome9_lease.port_from is not none
     - dome9_lease.port_from != ""
@@ -53,3 +44,5 @@
   set_fact:
     dome9_lease:
       id: 0
+  when:
+    - dome9_lease_response.skipped is false

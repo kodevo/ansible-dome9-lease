@@ -1,7 +1,7 @@
 ---
 # variable defaults
 
-dome9_lease:
+dome9_lease_defaults:
   action: acquire
   name: default
   region: us_east_1
@@ -11,4 +11,4 @@ dome9_lease:
   protocol: TCP
   port_from:
   port_to:
-  note: Acquired via Ansible
+  note:
