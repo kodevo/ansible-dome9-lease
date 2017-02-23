@@ -7,7 +7,7 @@ install:
   - pip install ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 script:
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
-  - ansible-playbook -vvv -i tests/inventory tests/test.yml --connection=local --become
+  - ansible-playbook -i tests/inventory --syntax-check tests/test.yml
+  - ansible-playbook -i tests/inventory --become --connection=local --vvvv tests/test.yml
 notifications:
   slack: kodevo:zmSQolZbN9aF8oqgBnEddmzX
