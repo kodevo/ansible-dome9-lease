@@ -39,10 +39,31 @@
   debug:
     var: dome9_lease_response
     verbosity: 2
+  when:
+    - dome9_lease_response is defined
 
 - name: Add lease_id to dome9_lease
   set_fact:
     dome9_lease:
-      id: 0
+      id: "{{ dome9_lease_response.json.id }}"
   when:
-    - dome9_lease_response.skipped == false
+    - dome9_lease is defined
+    - dome9_lease.action == "acquire"
+    - dome9_lease_response.skipped is undefined
+    - dome9_lease_response.json is defined
+    - dome9_lease_response.json.id is defined
+
+- name: Terminate dome9 Dynamic Lease
+  uri:
+    url: "https://api.dome9.com/v2/accesslease/{{ dome9_lease.id }}"
+    user: "{{ dome9_api_key_id }}"
+    password: "{{ dome9_api_key_secret }}"
+    method: DELETE
+    force_basic_auth: yes
+    status_code: 201
+  when:
+    - dome9_lease is defined
+    - dome9_lease.action == "terminate"
+    - dome9_lease.id is defined
+    - dome9_lease.id is not none
+    - dome9_lease.id != ""
