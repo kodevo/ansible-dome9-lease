@@ -37,6 +37,13 @@ dome9_leases:
 ##### See Also
 * [Dome9 v2 API Documentation](https://github.com/Dome9/V2_API#aws-lease-create)
 
+## Dome9 API Error Responses
+
+The following are known error responses and possible solutions:
+
+**500** Internal Server Error
+* `Cannot Create Lease - No such AWS service`: The requested protocol and port range must be defined for the security group.
+
 ## Dependencies
 
 None
