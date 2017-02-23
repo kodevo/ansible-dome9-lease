@@ -3,7 +3,6 @@
   debug:
     var: dome9_leases
     verbosity: 2
-  when: dome9_leases is defined
 
 - name: Acquire dome9 Dynamic Leases
   uri:
@@ -26,4 +25,4 @@
     return_content: yes
     status_code: 201
   with_items: "{{ dome9_leases }}"
-  when: dome9_leases is defined
+  when: dome9_leases is defined and dome9_leases|length > 0
