@@ -8,6 +8,6 @@ install:
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 script:
   - ansible-playbook -i tests/inventory --syntax-check tests/test.yml
-  - ansible-playbook -i tests/inventory --become --connection=local -vvvv tests/test.yml
+  - ansible-playbook -i tests/inventory --become --connection=local -vvv tests/test.yml
 notifications:
   slack: kodevo:zmSQolZbN9aF8oqgBnEddmzX
