@@ -29,14 +29,19 @@
     - dome9_lease is defined
     - dome9_lease.action == "acquire"
     - dome9_lease.region is defined
+    - dome9_lease.region is not none
     - dome9_lease.region != ""
     - dome9_lease.sg is defined
+    - dome9_lease.sg is not none
     - dome9_lease.sg != ""
     - dome9_lease.length is defined
+    - dome9_lease.length is not none
     - dome9_lease.length != ""
     - dome9_lease.protocol is defined
+    - dome9_lease.protocol is not none
     - dome9_lease.protocol != ""
     - dome9_lease.port_from is defined
+    - dome9_lease.port_from is not none
     - dome9_lease.port_from != ""
 
 - name: dome9_lease_response
