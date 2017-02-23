@@ -1,8 +1,9 @@
 ---
 # variable defaults
 
-dome9_leases: []
-dome9_lease_default_region: "us_east_1"
-dome9_lease_default_length: "0:5:0"
-dome9_lease_default_protocol: "TCP"
-dome9_lease_default_note: "Acquired via Ansible"
+dome9_lease:
+  action: acquire
+  region: us_east_1
+  length: 0:5:0
+  protocol: TCP
+  note: Acquired via Ansible

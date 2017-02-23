@@ -1,7 +1,7 @@
 ---
-- name: dome9_leases
+- name: dome9_lease
   debug:
-    var: dome9_leases
+    var: dome9_lease
     verbosity: 2
 
 - name: Acquire dome9 Dynamic Leases
@@ -11,24 +11,29 @@
     password: "{{ dome9_api_key_secret }}"
     method: POST
     body:
-      region: "{{ item.region | default(dome9_lease_default_region) }}"
-      securityGroupId: "{{ item.sg }}"
-      ip: "{{ item.ip | default(ansible_default_ipv4.address) }}"
-      length: "{{ item.length | default(dome9_lease_default_length) }}"
-      protocol: "{{ item.protocol | default(dome9_lease_default_protocol) }}"
-      portFrom: "{{ item.port_from | int }}"
-      portTo: "{{ item.port_to | int }}"
-      note: "{{ item.note | default(dome9_lease_default_note) }}"
+      region: "{{ dome9_lease.region }}"
+      securityGroupId: "{{ dome9_lease.sg }}"
+      ip: "{{ dome9_lease.ip | default(omit) }}"
+      length: "{{ dome9_lease.length }}"
+      protocol: "{{ dome9_lease.protocol }}"
+      portFrom: "{{ dome9_lease.port_from | int }}"
+      portTo: "{{ dome9_lease.port_to | int }}"
+      note: "{{ dome9_lease.note | default(omit) }}"
     body_format: json
     HEADER_Content-Type: application/json
     force_basic_auth: yes
     return_content: yes
     status_code: 201
-  with_items: "{{ dome9_leases }}"
   register: dome9_lease_response
-  when: dome9_leases is defined and dome9_leases|length > 0
+  when:
+    - dome9_lease is defined
+    - dome9_lease.action == "acquire"
 
 - name: dome9_lease_response
   debug:
     var: dome9_lease_response
     verbosity: 2
+
+- name: Adding lease_id to dome9_leases
+  set_fact:
+    dome9_lease.id: 0

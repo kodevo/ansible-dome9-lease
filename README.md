@@ -11,7 +11,7 @@ None
 
 ## Role Variables
 
-**dome9_leases**: A list of leases to acquire.
+**dome9_lease**: A dictionary configuration for the lease to acquire.
 
 * name (string) - The name of the lease.
 * region (string) - AWS region of the security group: 'us_east_1', 'us_west_1', 'eu_west_1', 'ap_southeast_1', 'ap_northeast_1', 'us_west_2', 'sa_east_1', 'az_1_region_a_geo_1', 'az_2_region_a_geo_1', 'az_3_region_a_geo_1', 'ap_southeast_2', 'mellanox_region', 'us_gov_west_1', 'eu_central_1', 'ap_northeast_2'.
@@ -23,15 +23,16 @@ None
 * note (string) - A comment for the lease displayed in dome9.
 
 ```
-dome9_leases:
-  - name: ssh
-    region: "us_east_1"
-    sg: "sg-123abc"
-    length: "0:5:0"
-    protocol: "TCP"
-    port_from: 22
-    port_to: 22
-    note: "Temporary Access to Perform Maintenance Updates"
+dome9_lease:
+  action: acquire
+  name: ssh
+  region: us_east_1
+  sg: sg-123abc
+  length: 0:5:0
+  protocol: TCP
+  port_from: 22
+  port_to: 22
+  note: Temporary Access to Perform Maintenance Updates
 ```
 
 ##### See Also

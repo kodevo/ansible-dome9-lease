@@ -7,16 +7,21 @@
   roles:
     - ansible-dome9-lease
     - role: ansible-dome9-lease
-      dome9_leases:
-        - name: test 1
-          sg: "{{ lookup('env','DOME9_LEASE_SG_ID_1') }}"
-          protocol: "TCP"
-          port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_1') | int }}"
-          port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_1') | int }}"
-          note: "ansible-dome9-lease test 1"
-        - name: test 2
-          sg: "{{ lookup('env','DOME9_LEASE_SG_ID_2') }}"
-          protocol: "TCP"
-          port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_2') | int }}"
-          port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_2') | int }}"
-          note: "ansible-dome9-lease test 2"
+      dome9_lease:
+        name: test 1
+        sg: "{{ lookup('env','DOME9_LEASE_SG_ID_1') }}"
+        port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_1') | int }}"
+        port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_1') | int }}"
+        note: ansible-dome9-lease test 1
+    - role: ansible-dome9-lease
+      dome9_lease:
+        action: terminate
+    - role: ansible-dome9-lease
+      dome9_lease:
+        action: acquire
+        name: test 2
+        sg: "{{ lookup('env','DOME9_LEASE_SG_ID_2') }}"
+        protocol: TCP
+        port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_2') | int }}"
+        port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_2') | int }}"
+        note: ansible-dome9-lease test 2
