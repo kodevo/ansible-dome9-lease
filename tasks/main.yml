@@ -61,7 +61,7 @@
     password: "{{ dome9_api_key_secret }}"
     method: DELETE
     force_basic_auth: yes
-    status_code: 201
+    status_code: 204
   when:
     - dome9_lease is defined
     - dome9_lease.action == "terminate"
