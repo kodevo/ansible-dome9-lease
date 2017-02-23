@@ -11,14 +11,14 @@
     password: "{{ dome9_api_key_secret }}"
     method: POST
     body:
-      region: "{{ item.region | dome9_lease_default_region }}"
+      region: "{{ item.region | default(dome9_lease_default_region) }}"
       securityGroupId: "{{ item.sg }}"
-      ip: "{{ item.ip | default(omit) }}"
-      length: "{{ item.length | dome9_lease_default_length }}"
-      protocol: "{{ item.protocol | dome9_lease_default_protocol }}"
+      ip: "{{ item.ip | default(ansible_default_ipv4.address) }}"
+      length: "{{ item.length | default(dome9_lease_default_length) }}"
+      protocol: "{{ item.protocol | default(dome9_lease_default_protocol) }}"
       portFrom: "{{ item.port_from | int }}"
       portTo: "{{ item.port_to | int }}"
-      note: "{{ item.note | dome9_lease_default_note | default(omit) }}"
+      note: "{{ item.note | default(dome9_lease_default_note) }}"
     body_format: json
     HEADER_Content-Type: application/json
     force_basic_auth: yes
