@@ -8,15 +8,15 @@
     - ansible-dome9-lease
     - role: ansible-dome9-lease
       dome9_leases:
-        - name: test ssh
-          sg: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
+        - name: test 1
+          sg: "{{ lookup('env','DOME9_LEASE_SG_ID_1') }}"
           protocol: "TCP"
-          port_from: 22
-          port_to: 22
-          note: "ansible-dome9-lease test"
-        - name: test http
-          sg: "{{ lookup('env','DOME9_LEASE_SG_ID') }}"
+          port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_1') | int }}"
+          port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_1') | int }}"
+          note: "ansible-dome9-lease test 1"
+        - name: test 2
+          sg: "{{ lookup('env','DOME9_LEASE_SG_ID_2') }}"
           protocol: "TCP"
-          port_from: 80
-          port_to: 80
-          note: "ansible-dome9-lease test"
+          port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_2') | int }}"
+          port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_2') | int }}"
+          note: "ansible-dome9-lease test 2"
