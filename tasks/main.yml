@@ -42,11 +42,9 @@
   when:
     - dome9_lease_response is defined
 
-- name: Add lease_id to dome9_lease
+- name: Set dome9_lease_id
   set_fact:
     dome9_lease_id: "{{ dome9_lease_response.json.id }}"
-    dome9_lease:
-      id: "{{ dome9_lease_response.json.id }}"
   when:
     - dome9_lease is defined
     - dome9_lease.action == "acquire"
