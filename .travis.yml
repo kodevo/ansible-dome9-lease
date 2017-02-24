@@ -1,12 +1,25 @@
 language: python
 python: '2.7'
+
 before_install:
   - sudo apt-get update -qq
+  - sudo apt-get install -qq python-apt python-pycurl
+
 install:
   - pip install ansible
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+
 script:
+  - echo -e "\e[31m######AnsibleVersion#######\e[0m"
+  - ansible --version
+
+  # 1st: check syntax
+  - echo "\e[31m######***************************** SYNTAX CHECK (1) *****************************\e[0m"
   - ansible-playbook -i tests/inventory --syntax-check tests/test.yml
+
+  # 2nd:  Make sure we run the entire playbook
+  - echo "*************************** RUN PLAYBOOK (2) *****************************"
   - ansible-playbook -i tests/inventory --become --connection=local -vv tests/test.yml
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
