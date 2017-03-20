@@ -28,3 +28,6 @@
         port_from: "{{ lookup('env','DOME9_LEASE_PORT_FROM_2') | int }}"
         port_to: "{{ lookup('env','DOME9_LEASE_PORT_TO_2') | int }}"
         note: ansible-dome9-lease test 2
+    - role: ansible-dome9-lease
+      dome9_lease:
+        action: terminate
