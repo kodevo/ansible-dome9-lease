@@ -69,8 +69,11 @@
     - dome9_lease_response is defined
 
 - name: Set dome9_lease_id
-  set_fact:
-    dome9_lease_id: "{{ dome9_lease_response.json.id }}"
+  set_stats:
+    data:
+      dome9_lease_id: "{{ dome9_lease_response.json.id }}"
+    aggregate: no
+    per_host: no
   when:
     - dome9_lease_response is defined
     - dome9_lease_response.skipped is undefined
