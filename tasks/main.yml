@@ -39,7 +39,7 @@
     body:
       region: "{{ dome9_lease_region }}"
       securityGroupId: "{{ dome9_lease_sg | int }}"
-      ip: "{{ dome9_lease_ip }}"
+      ip: "{{ dome9_lease_ip | default(ansible_default_ipv4.address) }}"
       length: "{{ dome9_lease_length }}"
       protocol: "{{ dome9_lease_protocol  }}"
       portFrom: "{{ dome9_lease_port_from | int }}"
