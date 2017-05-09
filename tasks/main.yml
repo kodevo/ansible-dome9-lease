@@ -15,7 +15,6 @@
       portTo: "{{ dome9_lease.port_to | int }}"
       note: "{{ dome9_lease.note | default(omit) }}"
     body_format: json
-    HEADER_Content-Type: application/json
     force_basic_auth: yes
     return_content: yes
     status_code: 201
@@ -47,7 +46,6 @@
       portTo: "{{ dome9_lease_port_to | int }}"
       note: "{{ dome9_lease_note | default(omit) }}"
     body_format: json
-    HEADER_Content-Type: application/json
     force_basic_auth: yes
     return_content: yes
     status_code: 201
