@@ -38,7 +38,7 @@
     password: "{{ dome9_api_key_secret }}"
     method: POST
     body:
-      region: "{{ dome9_lease_region ) }}"
+      region: "{{ dome9_lease_region }}"
       securityGroupId: "{{ dome9_lease_sg | int }}"
       ip: "{{ dome9_lease_ip }}"
       length: "{{ dome9_lease_length }}"
