@@ -55,7 +55,6 @@
   when:
     - dome9_lease_version is defined
     - dome9_lease_version == "2017.05.08"
-    - dome9_lease is defined
     - dome9_lease_action == "acquire"
     - dome9_lease_sg is defined
     - dome9_lease_sg is not none
